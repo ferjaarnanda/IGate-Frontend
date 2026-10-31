@@ -1,17 +1,7 @@
 import React from 'react';
+import { scrollToMobile } from './scroll';
 
 export const Footer: React.FC = () => {
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
-      window.scrollTo({ top, behavior: 'smooth' });
-    } else if (id === 'hero') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   const visuallyHiddenStyle: React.CSSProperties = {
     position: 'absolute',
     width: '1px',
@@ -48,7 +38,7 @@ export const Footer: React.FC = () => {
         {/* Interactive Navigation Links with >= 44x44 Touch Target */}
         <a
           href="#hero"
-          onClick={(e) => scrollToSection(e, 'hero')}
+          onClick={(e) => scrollToMobile(e, 'hero')}
           data-ref="footer_link_home"
           className="absolute block pointer-events-auto cursor-pointer"
           style={{
@@ -64,7 +54,7 @@ export const Footer: React.FC = () => {
 
         <a
           href="#about"
-          onClick={(e) => scrollToSection(e, 'about')}
+          onClick={(e) => scrollToMobile(e, 'about')}
           data-ref="footer_link_about"
           className="absolute block pointer-events-auto cursor-pointer"
           style={{
@@ -80,7 +70,7 @@ export const Footer: React.FC = () => {
 
         <a
           href="#ticket"
-          onClick={(e) => scrollToSection(e, 'ticket')}
+          onClick={(e) => scrollToMobile(e, 'ticket')}
           data-ref="footer_link_ticket"
           className="absolute block pointer-events-auto cursor-pointer"
           style={{

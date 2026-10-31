@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Navbar } from './Navbar';
 import { Hero } from './Hero';
 import { About } from './About';
@@ -8,10 +8,47 @@ import { DressCode } from './DressCode';
 import { Location } from './Location';
 import { Throwback } from './Throwback';
 import { Footer } from './Footer';
+import { initMobileLenis, destroyMobileLenis } from './scroll';
 
 export const MobileApp: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const lenis = initMobileLenis();
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (lenis && containerRef.current && typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        lenis.resize();
+      });
+      resizeObserver.observe(containerRef.current);
+    }
+
+    // Call lenis.resize after important images are loaded
+    const handleImageLoad = () => {
+      if (lenis) lenis.resize();
+    };
+
+    const images = document.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad, { once: true });
+      }
+    });
+
+    return () => {
+      if (resizeObserver) resizeObserver.disconnect();
+      destroyMobileLenis();
+    };
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-black text-[#EEEEEE] overflow-x-clip selection:bg-[#6B1724] selection:text-white">
+    <div
+      ref={containerRef}
+      className="relative min-h-screen bg-black text-[#EEEEEE] overflow-x-clip selection:bg-[#6B1724] selection:text-white"
+    >
       {/* Mobile Fixed Navbar */}
       <Navbar />
 

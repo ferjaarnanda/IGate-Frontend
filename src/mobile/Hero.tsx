@@ -1,15 +1,7 @@
 import React from 'react';
+import { scrollToMobile } from './scroll';
 
 export const Hero: React.FC = () => {
-  const scrollToTicket = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.getElementById('ticket');
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
   const visuallyHiddenStyle: React.CSSProperties = {
     position: 'absolute',
     width: '1px',
@@ -78,7 +70,7 @@ export const Hero: React.FC = () => {
         */}
         <a
           href="#ticket"
-          onClick={scrollToTicket}
+          onClick={(e) => scrollToMobile(e, 'ticket')}
           data-ref="hero_btn_cta"
           className="absolute pointer-events-auto block transition-transform duration-200 active:scale-95"
           style={{

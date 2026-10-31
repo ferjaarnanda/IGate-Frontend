@@ -34,6 +34,19 @@ export const Ticket: React.FC = () => {
 
       {/* 25.75rem Mobile Container (412px canvas) */}
       <div className="relative w-full max-w-[25.75rem] h-full mx-auto z-10 pointer-events-none">
+        {/* Ticket Card Target Wrapper: aligns with the top of the ticket card visual (y=1040px in PDF) */}
+        <div
+          id="ticket-card"
+          data-ref="ticket_card_target"
+          className="absolute pointer-events-none"
+          style={{
+            top: '3.9375rem', // 1040px - 977px = 63px = 3.9375rem
+            left: 0,
+            width: '100%',
+            height: '32.1875rem',
+          }}
+        />
+
         {/* Visually Hidden Content for Screen Readers & SEO */}
         <div style={visuallyHiddenStyle}>
           <h2>GRAB UR TICKET</h2>

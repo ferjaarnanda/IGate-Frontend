@@ -1,17 +1,7 @@
 import React from 'react';
+import { scrollToMobile } from './scroll';
 
 export const Navbar: React.FC = () => {
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
-      window.scrollTo({ top, behavior: 'smooth' });
-    } else if (id === 'hero') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
     <header
       id="navbar"
@@ -26,7 +16,7 @@ export const Navbar: React.FC = () => {
         {/* Logo I-Gate: pos=(22.0, 13.0), dim=(68.0x43.0) -> (44, 26, 180, 112) at 2x */}
         <a
           href="#hero"
-          onClick={(e) => scrollToSection(e, 'hero')}
+          onClick={(e) => scrollToMobile(e, 'hero')}
           data-ref="nav_logo"
           className="absolute block cursor-pointer transition-opacity hover:opacity-90"
           style={{
@@ -50,7 +40,7 @@ export const Navbar: React.FC = () => {
         {/* Link: Home - pos=(187.0, 23.0) */}
         <a
           href="#hero"
-          onClick={(e) => scrollToSection(e, 'hero')}
+          onClick={(e) => scrollToMobile(e, 'hero')}
           data-ref="nav_link_home"
           className="absolute font-sans font-normal text-[1.25rem] text-white hover:text-[#E0D2C2] transition-colors leading-none tracking-[0.01em]"
           style={{
@@ -65,7 +55,7 @@ export const Navbar: React.FC = () => {
         {/* Link: About - pos=(245.5, 23.0) */}
         <a
           href="#about"
-          onClick={(e) => scrollToSection(e, 'about')}
+          onClick={(e) => scrollToMobile(e, 'about')}
           data-ref="nav_link_about"
           className="absolute font-sans font-normal text-[1.25rem] text-white hover:text-[#E0D2C2] transition-colors leading-none tracking-[0.01em]"
           style={{
@@ -80,7 +70,7 @@ export const Navbar: React.FC = () => {
         {/* Button: Ticket - pos=(308.0, 18.0), dim=(87.0x32.0), bg: #6F1718, radius: 6px */}
         <a
           href="#ticket"
-          onClick={(e) => scrollToSection(e, 'ticket')}
+          onClick={(e) => scrollToMobile(e, 'ticket')}
           data-ref="nav_btn_ticket"
           className="absolute block cursor-pointer transition-transform duration-200 active:scale-95 rounded-[6px] overflow-hidden"
           style={{
@@ -112,3 +102,5 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
+
+export default Navbar;
