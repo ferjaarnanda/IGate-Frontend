@@ -1,5 +1,12 @@
 import Lenis from 'lenis';
 
+/**
+ * SCROLL_GAP_MOBILE:
+ * Jarak ekstra (dalam px) antara bagian bawah navbar mobile yang fixed
+ * dan bagian paling atas dari bounding box kartu target (About, Ticket, dll).
+ */
+export const SCROLL_GAP_MOBILE = 36;
+
 let mobileLenisInstance: Lenis | null = null;
 
 export function initMobileLenis(): Lenis {
@@ -56,8 +63,8 @@ export function destroyMobileLenis(): void {
 
 /**
  * Resolves the destination element based on section id:
- * - 'about' -> '#about-card' (the wrapper representing the top edge of the card)
- * - 'ticket' -> '#ticket-card' (the wrapper representing the ticket card visual)
+ * - 'about' -> '#about-card' (the wrapper representing the topmost edge of the card bounding box)
+ * - 'ticket' -> '#ticket-card' (the wrapper representing the topmost edge of the ticket card visual)
  * - 'hero' -> '#hero'
  */
 export function getTargetElement(id: string): HTMLElement | null {
@@ -116,7 +123,7 @@ export function scrollToMobile(
 
   const nav = document.getElementById('navbar');
   const navHeight = nav ? nav.getBoundingClientRect().height : 70;
-  const targetOffset = navHeight + 12; // Card top should be navbarHeight + 12px
+  const targetOffset = navHeight + SCROLL_GAP_MOBILE; // Card top should be navbarHeight + SCROLL_GAP_MOBILE (36px)
 
   const lenis = getMobileLenis();
 
