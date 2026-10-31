@@ -1,0 +1,33 @@
+# dependencies & build
+node_modules/
+dist/
+.vite/
+
+# secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# referensi desain & file kerja (tetap ada di laptop, tidak di-push)
+design/
+design_landingpage_desktop/
+design_landingpage_mobile/
+tataletak_desktop/
+tataletak_mobile/
+elemen/
+scratch/
+scripts/
+ref-desktop-1x.png
+ref-desktop-2x.png
+scores.json
+inventory-desktop.json
+layout-desktop.json
+pdf_images_inventory.json
+
+# folder font sumber (salinan yang dipakai app ada di src/public)
+Cherish/
+Irish_Grover/
+iosevka-charon/
