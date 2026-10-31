@@ -16,7 +16,7 @@ export const MobileApp: React.FC = () => {
       <Navbar />
 
       {/* Mobile Continuous Canvas */}
-      <main className="relative z-10 w-full flex flex-col items-center">
+      <main className="relative z-10 w-full flex flex-col items-center pt-[4.375rem]">
         <Hero />
         <About />
         <Ticket />
