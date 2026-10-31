@@ -31,3 +31,10 @@ pdf_images_inventory.json
 Cherish/
 Irish_Grover/
 iosevka-charon/
+
+#mobile ref
+ref-mobile-1x.png
+ref-mobile-2x.png
+layout-mobile.json
+inventory-mobile.json
+scores*.json
